@@ -1,0 +1,96 @@
+### Quick Git Reference for Branch Management and Tracking
+
+**1. List All Tracked Files:**
+
+```bash
+git ls-files
+```
+
+- Shows all files currently tracked by Git.
+
+**2. Check Status of Tracked and Untracked Files:**
+
+```bash
+git status
+```
+
+- Displays tracked changes and untracked files.
+
+**3. Show Ignored Files:**
+
+```bash
+git status --ignored
+```
+
+- Lists ignored files per your `.gitignore`.
+
+**4. See Which Files Are Ignored by .gitignore:**
+
+```bash
+git check-ignore -v *
+```
+
+- Shows ignored files and the rule causing the ignore.
+
+**5. Rename ********`master`******** to ********`main`********:**
+
+```bash
+git branch -m master main
+```
+
+- Renames the local `master` branch to `main`.
+
+**6. Push ********`main`******** to Remote and Set Upstream:**
+
+```bash
+git push -u origin main
+```
+
+- Pushes `main` to the remote repository and sets it as the upstream branch.
+
+**7. Delete ********`master`******** Locally:**
+
+```bash
+git branch -d master
+```
+
+- Deletes the local `master` branch.
+
+**8. Delete ********`master`******** from Remote:**
+
+```bash
+git push origin --delete master
+```
+
+- Removes the `master` branch from the remote repository.
+
+**9. Verify Current Branch:**
+
+```bash
+git branch
+```
+
+- Lists local branches, with the current branch marked by `*`.
+
+**10. Switch to ********`main`********:**
+
+```bash
+git checkout main
+```
+
+- Changes the current branch to `main`.
+
+**11. Update Default Branch on GitHub:**
+
+- Navigate to **Settings > Branches** in your GitHub repo.
+- Change the default branch to `main`.
+
+**12. Ensure ********`HEAD`******** Points to ********`main`********:**
+
+- If needed, edit `.git/HEAD`:
+  ```plaintext
+  ref: refs/heads/main
+  ```
+
+Use this reference to manage branches and understand tracking in Git efficiently.
+

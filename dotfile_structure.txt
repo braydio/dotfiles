@@ -1,0 +1,10 @@
+
+~/dotfiles
+├── .editorconfig
+├── PowerShell
+│   └── aliases.ps1
+└── setup.ps1
+
+Aliases : 
+exenv                 |    Execution environment
+exenv file/at/path    |    Execution environment and file 
