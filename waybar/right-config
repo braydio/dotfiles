@@ -1,0 +1,111 @@
+{
+  "position": "bottom",
+  "height": 40,
+  "style": "style.css",
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "custom/terminal"
+  ],
+  "modules-center": [
+    "pulseaudio",
+    "network",
+    "cpu",
+    "memory",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "enable-shortnames": true,
+    "strip-wl": true
+  },
+  "custom/gmail": {
+    "exec": "~/Scripts/waybar/custom-gmail.sh",
+    "interval": 300,
+    "return-type": "json",
+    "on-click": "exec ~/Projects/OpenAI/GPTMail/main.py"
+  },
+  "custom/terminal": {
+    "format": "wayterm 󰨊",
+    "on-click": "kitty -T wayterm -c ~/.config/kitty/wayterm.conf -e bash",
+    "tooltip": "Wayterm"
+  },
+  "custom/cpu_temp": {
+    "exec": "~/Scripts/waybar/cpu-temp.sh",
+    "interval": 15,
+    "return-type": "json",
+    "format": "󰔏 ICON BANK  󰴷  ",
+    "tooltip": "cpu temperature"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "format": "󰀠 {:%I:%M %p}",
+    "format-alt": " {:%m-%d-%Y}",
+    "tooltip": "clock"
+  },
+  "cpu": {
+    "format": "{icon}",
+    "format-alt": "󰊠 CPU: {usage}%",
+    "tooltip": "cpu usage",
+    "on-click": "waybar-msg action toggle-format cpu",
+    "format-icons": [
+      "󱤐",
+      "󱤐",
+      "󱤐",
+      "󱓈"
+    ],
+    "states": {
+      "low": 20,
+      "moderate": 60,
+      "high": 80
+    }
+  },
+  "memory": {
+    "format": "{icon}",
+    "format-alt": " RAM: {used}Gb of {total}Gb",
+    "tooltip": "memory usage",
+    "on-click": "waybar-msg action toggle-format memory",
+    "format-icons": [
+      "",
+      "󰛕",
+      "󰐸"
+    ],
+    "states": {
+      "low": 30,
+      "moderate": 70,
+      "high": 90
+    }
+  },
+  "network": {
+    "format": "{icon}",
+    "format-alt": "󱫋 ETH: {bandwidthDownBits}↓ {bandwidthUpBits}↑",
+    "tooltip": "Network {essid}",
+    "on-click": "waybar-msg action toggle-format network",
+    "format-icons": [
+      "󱫋"
+    ]
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-alt": "Speaker: {volume}%",
+    "tooltip": "speakers",
+    "on-click": "waybar-msg action toggle-format pulseaudio",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "states": {
+      "muted": true,
+      "low": 0,
+      "medium": 1,
+      "high": 50
+    }
+  }
+}

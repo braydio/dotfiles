@@ -1,0 +1,86 @@
+/* General Styles */
+* {
+    font-family: "SpaceMono Nerd Font", monospace; /* Unified font */
+    font-size: 16px; /* Consistent text size */
+    color: #FFFFFF; /* White text */
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+/* Waybar Container */
+#waybar {
+    background: rgba(40, 40, 50, 0.3); /* Semi-transparent background for modules */
+    color: #FFFFFF; /* White text in Waybar */
+    border: none;
+    box-shadow: 2px 4px 12px rgba(255, 255, 255, 0.9); /* Soft, unified glow */
+}
+
+/* Module Styles */
+.module {
+    padding: 6px 8px; /* Consistent padding */
+    margin: 0 5px;
+    border: 1px solid transparent; /* Invisible border */
+    border-radius: 6px; /* Unified rounded corners */
+    background: transparent; /* No background by default */
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    font-weight: bold; /* Bold text for modules */
+    letter-spacing: 1px; /* Slightly modern spacing */
+}
+
+.module:hover {
+    color: #ff6347; /* Magma text on hover */
+    /* border-color: #ff6347 - Comment - Matching border  */
+}
+
+#clock {
+  color: @mantle;
+  background-color: @teal;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+/* Workspace Buttons */
+#workspaces button {
+    color: #FFFFFF; /* White text for workspaces */
+    background: transparent; /* No background */
+    border: 1px solid transparent; /* Invisible border by default */
+    border-radius: 6px; /* Slightly rounded corners */
+    padding: 4px 10px; /* Consistent padding for balance */
+    font-weight: normal; /* Normal weight */
+    transition: color 0.3s, border-color 0.3s; /* Smooth hover effects */
+}
+
+#workspaces button:hover {
+    color: #ff6347; /* Keep white text on hover */
+    border-color: #ff6347 /* Add border highlight on hover */
+}
+
+/* Tooltip Styles */
+.tooltip {
+    background: rgba(40, 40, 50, 0.9); /* Semi-transparent tooltip */
+    color: #FFFFFF; /* White text in tooltips */
+    border-radius: 4px;
+    padding: 3px;
+    font-size: 14px;
+    box-shadow: 0px 2px 6px rgba(255, 69, 0, 0.3); /* Unified glow */
+}
+
+/* Tray Icons */
+#tray .icon {
+    margin: 0 5px;
+    color: #FFFFFF; /* White icons */
+}
+
+#tray .icon:hover {
+    color: #FFFFFF; /* Keep consistent hover color */
+}
+
+/* Separators */
+.separator {
+    color: #FFFFFF; /* White separator */
+    margin: 0 8px;
+    font-size: 14px;
+}
+

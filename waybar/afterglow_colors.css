@@ -1,0 +1,57 @@
+@define-color background #181c27;
+/* terminal background */
+@define-color foreground #ada37a;
+/* terminal foreground */
+@define-color cursor #91805a;
+
+@define-color black #181818;
+/* color0 */
+@define-color bright_black #555555;
+/* color8 */
+
+@define-color red #800009;
+/* color1 */
+@define-color bright_red #ab3834;
+/* color9 */
+
+@define-color green #48513b;
+/* color2 */
+@define-color bright_green #a6a65d;
+/* color10 */
+
+@define-color yellow #cc8a3e;
+/* color3 */
+@define-color bright_yellow #dcde7b;
+/* color11 */
+
+@define-color blue #566d8c;
+/* color4 */
+@define-color bright_blue #2f97c6;
+/* color12 */
+
+@define-color magenta #724c7c;
+/* color5 */
+@define-color bright_magenta #d33060;
+/* color13 */
+
+@define-color cyan #5b4f4a;
+/* color6 */
+@define-color bright_cyan #f3dab1;
+/* color14 */
+
+@define-color white #ada37e;
+/* color7 */
+@define-color bright_white #f3f3f3;
+/* color15 */
+
+/* Structural colors for Waybar (mapped to terminal shades) */
+@define-color crust #181c27;
+/* same as background */
+@define-color mantle #13161f;
+/* inactive tab background */
+@define-color base #172539;
+/* selection background */
+@define-color surface0 #363a4f;
+/* neutral surfaces */
+@define-color overlay0 #555555;
+/* matches bright black */

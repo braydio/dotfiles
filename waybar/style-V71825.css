@@ -1,0 +1,163 @@
+/* --- Waybar General --- */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: JetBrainsMono, monospace;
+  font-size: 15px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+window#waybar {
+  background: #181825e8;
+  color: #f2f2f2;
+  border-top: 2px solid #cba6f7;
+  border-bottom: 2px solid #313244;
+  box-shadow: 0 1px 4px 0 #18182588;
+}
+
+/* --- Layout & Spacing --- */
+#waybar>* {
+  margin: 0 4px;
+  padding: 0;
+}
+
+/* --- Left Modules --- */
+#workspaces,
+#window {
+  background: #232634f2;
+  color: #cba6f7;
+  padding: 0 16px;
+  border-radius: 7px 0 0 7px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+#window {
+  font-style: italic;
+  color: #f5e0dc;
+  border-radius: 0 7px 7px 0;
+  background: #232634e0;
+}
+
+/* --- Workspaces --- */
+#workspaces button {
+  color: #b4befe;
+  background: transparent;
+  border: none;
+  margin: 0 4px;
+  padding: 3px 14px 3px 10px;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: background 0.15s, color 0.15s;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+  background: #cba6f7cc;
+  color: #232634;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  background: #f38ba8;
+  color: #181825;
+}
+
+#workspaces button:hover {
+  background: #a6e3a1cc;
+  color: #232634;
+}
+
+/* --- Center Modules --- */
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#tray {
+  background: #232634d0;
+  color: #f2f2f2;
+  margin: 0 6px;
+  padding: 0 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  min-width: 36px;
+  box-shadow: 0 0 0 1px #cba6f740;
+}
+
+#tray {
+  margin-right: 10px;
+}
+
+#pulseaudio.muted {
+  color: #a6adc8;
+  background: #45475a;
+}
+
+#cpu.low,
+#memory.low {
+  color: #a6e3a1;
+  background: #232634cc;
+}
+
+#cpu.moderate,
+#memory.moderate {
+  color: #fab387;
+  background: #232634cc;
+}
+
+#cpu.high,
+#memory.high {
+  color: #f38ba8;
+  background: #232634cc;
+}
+
+#network {
+  color: #89dceb;
+}
+
+#pulseaudio {
+  color: #f9e2af;
+}
+
+/* --- Right Modules --- */
+#custom-terminal {
+  background: #313244fa;
+  color: #b4befe;
+  margin-right: 10px;
+  border-radius: 0 8px 8px 0;
+  padding: 0 18px;
+  font-weight: bold;
+  transition: background 0.15s;
+  box-shadow: 0 0 0 1px #cba6f780;
+}
+
+#clock {
+  background: #181825cc;
+  color: #f2f2f2;
+  font-weight: bold;
+  padding: 0 16px;
+  margin-right: 5px;
+  border-radius: 5px;
+  letter-spacing: 0.3px;
+}
+
+/* --- Tooltips (if supported) --- */
+tooltip {
+  background: #181825f2;
+  color: #cdd6f4;
+  font-size: 14px;
+  border: 1px solid #45475a;
+  border-radius: 6px;
+  padding: 7px 15px;
+}
+
+/* --- Misc Modules --- */
+#custom-gmail {
+  background: #232634ee;
+  color: #fab387;
+  padding: 0 13px;
+  margin-left: 8px;
+  border-radius: 4px;
+}

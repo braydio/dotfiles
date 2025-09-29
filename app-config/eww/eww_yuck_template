@@ -1,0 +1,113 @@
+
+(define-bar mybar
+  :monitor 0
+  :anchor bottom
+  :spacing 5
+  :class "eww-bar"
+  :exclusive true
+  :window "mybar"
+  :widgets [
+    (box :class "left" :orientation "h"
+      (workspaces)
+      (window-title)
+    )
+
+    (box :class "center" :orientation "h"
+      (audio)
+      (network)
+      (backlight)
+      (cpu-temp)
+      (cpu)
+      (memory)
+      (weather)
+      (clock)
+    )
+
+    (box :class "right" :orientation "h"
+      (gmail)
+      (bluetooth)
+      (tray)
+    )
+  ]
+)
+
+(defwidget workspaces []
+  (box :class "workspaces" :orientation "h"
+    (for workspace in (eww workspaces)
+      (button :class (format "workspace {status}" workspace)
+        :onclick (format "hyprctl dispatch workspace {id}" workspace)
+        "{name}"
+      )
+    )
+  )
+)
+
+(defwidget window-title []
+  (label :text (eww focused-window))
+)
+
+(defwidget audio []
+  (button :class "audio" :onclick "pavucontrol"
+    "🔊 " (eww volume)
+  )
+)
+
+(defwidget network []
+  (button :class "network"
+    "󰇥 " (eww network)
+  )
+)
+
+(defwidget backlight []
+  (button :class "backlight"
+    "💡 " (eww backlight)
+  )
+)
+
+(defwidget cpu-temp []
+  (button :class "cpu-temp"
+    "󰔏 " (eww cpu-temp)
+  )
+)
+
+(defwidget cpu []
+  (button :class "cpu"
+    "󰊠 " (eww cpu)
+  )
+)
+
+(defwidget memory []
+  (button :class "memory"
+    " " (eww memory)
+  )
+)
+
+(defwidget weather []
+  (button :class "weather"
+    "☁️ " (eww weather)
+  )
+)
+
+(defwidget clock []
+  (button :class "clock"
+    "󰀠 " (eww clock)
+  )
+)
+
+(defwidget gmail []
+  (button :class "gmail" :onclick "xdg-open https://mail.google.com"
+    "📧 " (eww gmail)
+  )
+)
+
+(defwidget bluetooth []
+  (button :class "bluetooth"
+    " " (eww bluetooth)
+  )
+)
+
+(defwidget tray []
+  (box :class "tray"
+    (eww tray)
+  )
+)

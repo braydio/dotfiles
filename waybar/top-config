@@ -1,0 +1,65 @@
+{
+  "position": "top",
+  "height": 40,
+  "style": "style.css",
+  "modules-center": [
+    "custom/spacer-leftcenter",
+    "custom/date", 
+    "custom/archlinux-icon",
+    "custom/time",
+    "custom/spacer-rightcenter"
+  ],
+  "modules-right": [
+    "custom/right-corner",
+  ],
+  "modules-left": [
+    "custom/left-corner",
+    "custom/gmail",
+    "custom/weather",
+    ],
+  "custom/left-corner": {
+    "format": "",
+    "tooltip": "false"
+  },
+  "custom/right-corner": {
+    "format": "",
+    "tooltip": "false"
+  },
+  "custom/gmail": {
+    "exec": "~/Scripts/waybar/custom-gmail.sh",
+    "return-type": "json",
+    "interval": 300,
+    "on-click": "~/Projects/GPTMail/silent_summary.py"
+  },
+  "custom/weather": {
+    "exec": "~/Scripts/waybar/custom-weather.py",
+    "interval": 300,
+    "return-type": "json"
+  },
+  "custom/date": {
+    "exec": "date '+  %m-%d-%Y'",
+    "interval": 60,
+    "tooltip": "Date"
+  },
+  "custom/time": {
+    "exec": "date '+  %I:%M %p'",
+    "interval": 1,
+    "tooltip": "Time"
+  },
+  "custom/leftspacer": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/spacer-leftcenter": {
+    "format": "",
+  "tooltip": "false"
+  },
+  "custom/archlinux-icon": {
+    "format": "  ",
+    "tooltip": false
+  },
+  "custom/spacer-rightcenter": {
+    "format": "",
+    "tooltip": "false"
+  }
+}

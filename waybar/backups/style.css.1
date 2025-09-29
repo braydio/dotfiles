@@ -1,0 +1,124 @@
+@import "macchiato.css";
+
+* {
+  font-family: FantasqueSansMono Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+}
+
+/* Make the entire bar visible with a subtle background and rounded corners */
+#waybar {
+  background-color: @base;
+  color: @green;
+  margin: 1px;
+  padding: 1px 1px;
+  border-radius: 5px;
+}
+
+/* Add spacing between each module */
+#waybar > * {
+  margin: 2px 2px;
+}
+
+/* Gmail Module */
+#custom-gmail {
+  color: blue;
+  border-radius: 1px;
+  margin: 2px;
+  padding: 3px;
+  margin-right: 1rem;
+  background-color: @sapphire;
+}
+
+#custom-gmail button {
+  color: @sapphire;
+  border-radius: 0px;
+  padding: 2px;
+  background-color: @mantle;
+}
+
+#custom-gmail button.active {
+  color: @crust;
+  background-color: @sapphire;
+  border-radius: 2px;
+}
+
+#custom-gmail button:hover {
+  color: @maroon;
+  border-radius: 5px;
+}
+
+/* Workspaces styling */
+#workspaces {
+  color: @mantle;
+  border-radius: 1px;
+  margin: 1px;
+  background-color: @overlay0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#workspaces button {
+  color: @sapphire;
+  border-radius: 0px;
+  padding: 2px;
+  background-color: @mantle;
+}
+
+#workspaces button.active {
+  color: @crust;
+  background-color: @sapphire;
+  border-radius: 2px;
+}
+
+#workspaces button:hover {
+  color: @maroon;
+  border-radius: 5px;
+}
+
+/* Styling for all modules present in your config */
+#backlight,
+#clock,
+#pulseaudio,
+#custom-cpu_temp,
+#cpu,
+#memory,
+#network {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  border-radius: 0px;
+}
+
+/* Weather Module */
+#custom-weather {
+  color: @sky;
+  background-color: @mantle;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+#custom-weather:hover {
+  background-color: @blue;
+  color: @crust;
+  transition: 0.3s;
+}
+
+/* Specific styles */
+#clock {
+  color: @blue;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#pulseaudio {
+  color: @blue;
+  margin-left: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+}

@@ -1,0 +1,93 @@
+
+; eww.yuck - Dark Souls Bar
+
+(defwindow darksouls-bar
+  :monitor 0
+  :anchor "bottom center"
+  :exclusive true
+  (darksouls-bar)
+)
+
+(defwidget darksouls-bar []
+  (box :class "bar"
+    :orientation "h"
+    :space-evenly false
+    :halign "fill"
+    :valign "end"
+    (box :class "modules-left"
+      (workspaces)
+      (window-title)
+    )
+    (box :class "modules-center"
+      (cpu)
+      (memory)
+      (network)
+      (audio)
+      (tray)
+    )
+    (box :class "modules-right"
+      (terminal)
+    )
+  )
+)
+
+
+
+(defpoll workspaces-list :interval "2s" "hyprctl workspaces -j")
+
+(defwidget workspaces []
+  (box :class "workspaces"
+    (for workspace workspaces-list
+      (button
+        :class (if workspace.focused "active" "inactive")
+        :onclick (format "hyprctl dispatch workspace %s" workspace.id)
+        workspace.name
+      )
+    )
+  )
+)
+
+
+
+(defwidget window-title []
+  (label :class "window-title"
+    :text (current-window)
+  )
+)
+
+(defwidget cpu []
+  (label :class "cpu"
+    :text (format "󰍛 CPU: %s%%" (cpu-usage))
+  )
+)
+
+(defwidget memory []
+  (label :class "memory"
+    :text (format " RAM: %s%%" (memory-usage))
+  )
+)
+
+(defwidget network []
+  (label :class "network"
+    :text (network-status)
+  )
+)
+
+(defwidget audio []
+  (label :class "audio"
+    :text (format " %s%%" (audio-volume))
+  )
+)
+
+(defwidget tray []
+  (systray)
+)
+
+(defwidget terminal []
+  (button
+    :class "custom-terminal"
+    :onclick "kitty -T wayterm -c ~/.config/kitty/wayterm.conf -e bash"
+    "wayterm 󰨊"
+  )
+)
+

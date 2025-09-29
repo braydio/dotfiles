@@ -1,0 +1,93 @@
+$bg-main: #18161b;
+$bg-panel: #232025;
+$bg-alt: #252021;
+$gold: #e7c97e;
+$orange: #d99043;
+$red: #af2e2e;
+$text-main: #e7c97e;
+
+.bar {
+  background: linear-gradient(90deg, $bg-main 0%, $bg-panel 100%);
+  font-family: 'Anonymous Pro Minux', 'Anonymous Pro', monospace;
+  font-size: 18px;
+  color: $text-main;
+  border-top: 1.5px solid $gold;
+  border-bottom: 2.5px solid #34280d;
+  box-shadow: 0 2px 8px #000a;
+  letter-spacing: 0.03em;
+  padding: 0 12px;
+}
+
+.workspaces {
+  background: $bg-alt;
+  border-radius: 12px;
+  border: 1.5px solid $gold;
+  margin-right: 18px;
+  padding: 0 8px;
+}
+
+.workspaces button {
+  background: none;
+  border: none;
+  color: #b0a076;
+  font-size: 18px;
+  font-family: 'Anonymous Pro Minux', 'Anonymous Pro', monospace;
+  margin: 2px 6px;
+  border-radius: 7px;
+  padding: 0 5px;
+  transition: 0.1s;
+}
+
+.workspaces button.active {
+  color: $gold;
+  background: rgba(223, 185, 119, 0.08);
+  font-weight: 700;
+}
+
+.workspaces button.inactive {
+  color: #b0a076;
+}
+
+.window-title {
+  color: $gold;
+  background: $bg-panel;
+  border-radius: 9px;
+  border: 1px solid $gold;
+  padding: 0 13px;
+  font-weight: 700;
+  font-size: 19px;
+  font-family: 'Anonymous Pro Minux', 'Anonymous Pro', monospace;
+}
+
+.cpu,
+.memory,
+.network,
+.audio,
+.custom-terminal {
+  background: $bg-alt;
+  color: $text-main;
+  border-radius: 11px;
+  border: 1.5px solid $gold;
+  margin: 0 8px;
+  padding: 0 14px;
+  font-size: 18px;
+  font-family: 'Anonymous Pro Minux', 'Anonymous Pro', monospace;
+  box-shadow: 0 2px 6px #0005;
+}
+
+.custom-terminal {
+  color: $gold;
+  background: $bg-panel;
+  border: 1.5px solid #ae8424;
+  font-family: 'Anonymous Pro Minux', 'Anonymous Pro', monospace;
+  font-size: 17px;
+  padding: 0 13px;
+}
+
+.systray {
+  background: rgba(35, 32, 37, 0.67); // 0.67 ≈ "aa"
+  border-radius: 10px;
+  border: 1.5px solid $gold;
+  margin-right: 12px;
+  padding: 0 7px;
+}

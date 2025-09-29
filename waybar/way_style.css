@@ -1,0 +1,130 @@
+@import "way_colors.css";
+
+* {
+  font-family: "SpaceMono Nerd Font", monospace;
+  font-size: 16px;
+  min-height: 0;
+}
+
+/* Make the entire bar visible with a subtle background and rounded corners */
+#waybar {
+  background: rgba(40, 40, 50, 0.3); 
+  color: @FFFFF;
+  margin: 1px;
+  padding: 1px 1px;
+  border-radius: 5px;
+}
+
+/* Add spacing between each module */
+#waybar > * {
+  margin: 2px 2px;
+}
+
+#custom-terminal {
+  padding: 1rem 1rem;
+  margin: 2px;
+  color: @maroon;
+  font-size: 14px;
+  border: groove 2px;
+  border-color: transparent;
+}
+
+#custom-terminal:hover {
+  border-color: @peach;
+}
+
+/* Increase font size for icons */
+#waybar button, #waybar .icon {
+  font-size: 16px/* Adjust this value to your preference */
+}
+#custom-gmail button:hover {
+  color: @maroon;
+  border-radius: 5px;
+}
+
+/* Workspaces styling */
+#workspaces {
+  color: @mantle;
+  border-radius: 1px;
+  margin: 1px;
+  background-color: @overlay0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#workspaces button {
+  color: @sapphire;
+  border-radius: 0px;
+  border: groove 2px transparent;
+  padding: 1px;
+  background-color: @mantle;
+}
+
+#workspaces button.active {
+  color: @crust;
+  background-color: @sapphire;
+  border-radius: 0px;
+}
+
+#workspaces button:hover {
+  color: @maroon;
+  border: groove 2px @mantle;
+  border-radius: 5px;
+}
+
+
+/* All modules styling */
+#pulseaudio,
+#memory,
+#backlight,
+#clock,
+#custom-cpu_temp,
+#cpu,
+#battery,
+#network {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  border-radius: 0px;
+}
+
+/* Weather Module */
+#custom-weather {
+  color: @sky;
+  background-color: @mantle;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+#custom-weather:hover {
+  background-color: @blue;
+  color: @crust;
+  transition: 0.3s;
+}
+
+/* Specific styles */
+#clock {
+  color: @mantle;
+  background-color: @teal;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#memory {
+  color: @blue;
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+}
+
+#pulseaudio {
+  color: @blue;
+  margin-left: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+}

@@ -1,0 +1,5 @@
+# Configure darkman to switch themes at fixed times.
+sunrise: "07:30"
+sunset: "19:30"
+portal: false
+dbus: false

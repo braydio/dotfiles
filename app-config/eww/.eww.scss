@@ -1,0 +1,48 @@
+
+@import "macchiato.css";
+
+* {
+  font-family: FantasqueSansMono Nerd Font;
+  font-size: 14px;
+}
+
+.eww-bar {
+  background-color: @base;
+  color: @green;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.workspaces button {
+  background-color: @overlay0;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.workspaces button:hover {
+  background-color: @maroon;
+}
+
+.audio, .network, .backlight, .cpu-temp, .cpu, .memory, .weather, .clock {
+  background-color: @surface0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.gmail {
+  color: @sapphire;
+  background-color: @mantle;
+}
+
+.gmail:hover {
+  background-color: @blue;
+}
+
+.bluetooth {
+  color: @blue;
+}
+
+.tray {
+  background-color: @overlay0;
+  padding: 5px;
+}

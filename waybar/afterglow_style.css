@@ -1,0 +1,134 @@
+@import "/home/braydenchaffee/.config/waybar/afterglow_colors.css";
+
+* {
+  font-family: "SpaceMono Nerd Font", monospace;
+  font-size: 16px;
+  min-height: 0;
+}
+
+/* Bar background */
+#waybar {
+  background: rgba(24, 28, 39, 0.9);
+  /* background with opacity */
+  color: @foreground;
+  margin: 1px;
+  padding: 1px 1px;
+  border-radius: 5px;
+}
+
+/* Spacing */
+#waybar>* {
+  margin: 2px 2px;
+}
+
+/* Custom terminal widget */
+#custom-terminal {
+  padding: 1rem 1rem;
+  margin: 2px;
+  color: @red;
+  font-size: 14px;
+  border: groove 2px;
+  border-color: transparent;
+}
+
+#custom-terminal:hover {
+  border-color: @yellow;
+}
+
+/* Icon sizing */
+#waybar button,
+#waybar .icon {
+  font-size: 16px;
+}
+
+#custom-gmail button:hover {
+  color: @red;
+  border-radius: 5px;
+}
+
+/* Workspaces */
+#workspaces {
+  color: @white;
+  border-radius: 1px;
+  margin: 1px;
+  background-color: @base;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#workspaces button {
+  color: @blue;
+  border-radius: 0px;
+  border: groove 2px transparent;
+  padding: 1px;
+  background-color: @mantle;
+}
+
+#workspaces button.active {
+  color: @crust;
+  background-color: @bright_blue;
+  border-radius: 0px;
+}
+
+#workspaces button:hover {
+  color: @red;
+  border: groove 2px @surface0;
+  border-radius: 5px;
+}
+
+/* Modules */
+#pulseaudio,
+#memory,
+#backlight,
+#clock,
+#custom-cpu_temp,
+#cpu,
+#battery,
+#network {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+  border-radius: 0px;
+}
+
+/* Weather */
+#custom-weather {
+  color: @bright_blue;
+  background-color: @mantle;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+#custom-weather:hover {
+  background-color: @blue;
+  color: @crust;
+  transition: 0.3s;
+}
+
+/* Clock */
+#clock {
+  color: @crust;
+  background-color: @yellow;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+/* Other modules */
+#backlight {
+  color: @bright_yellow;
+}
+
+#memory {
+  color: @bright_blue;
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+}
+
+#pulseaudio {
+  color: @bright_blue;
+  margin-left: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+}
