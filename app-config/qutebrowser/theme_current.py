@@ -1,0 +1,1 @@
+/home/braydenchaffee/.config/qutebrowser/theme_nord.py

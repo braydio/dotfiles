@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "SETUP THEMES BEFORE RUNNING THIS SON"
+echo "THEN RENAME live_toggle_waybar.sh TO toggle_waybar.sh"
+echo "AFTER THAT USE ,m IN QUTE TO TOGGLE WAYBAR COLORS WITH QUTEBROWSER"

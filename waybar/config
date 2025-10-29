@@ -1,93 +1,130 @@
 {
-  "position": "bottom",
-  "height": 40,
+  "position": "top",
+  "height": 36,
   "style": "style.css",
+
   "modules-left": [
-    "hyprland/workspaces"
+    "group/workspaces-title"
   ],
   "modules-center": [
-    "hyprland/window"
+    "custom/center_l",
+    "clock",
+    "custom/center_r"
   ],
   "modules-right": [
-    "custom/terminal",
-    "network",
-    "cpu",
-    "memory",
-    "pulseaudio",
-    "tray",
-    "clock"
+    "group/media",
+    "group/system",
+    "tray"
   ],
+
+  "group/workspaces-title": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/launcher",
+      "hyprland/workspaces",
+      "hyprland/window"
+    ]
+  },
+  "group/media": {
+    "orientation": "inherit",
+    "modules": [
+      "mpris"
+    ]
+  },
+  "group/system": {
+    "orientation": "inherit",
+    "modules": [
+      "network",
+      "pulseaudio",
+      "bluetooth",
+      "idle_inhibitor"
+    ]
+  },
+
+  "custom/launcher": {
+    "format": "󰀻",
+    "tooltip": "Launcher",
+    "on-click": "sh -lc 'command -v wofi >/dev/null 2>&1 && wofi --show drun || (command -v fuzzel >/dev/null 2>&1 && fuzzel --show drun) || (command -v rofi >/dev/null 2>&1 && rofi -show drun) || (command -v thunar >/dev/null 2>&1 && thunar) || kitty'"
+  },
+
+  "custom/center_l": { "format": "", "tooltip": "" },
+  "custom/center_r": { "format": "", "tooltip": "" },
+
   "hyprland/workspaces": {
     "disable-scroll": false,
     "enable-shortnames": true,
     "strip-wl": true
   },
-  "custom/gmail": {
-    "exec": "~/Scripts/waybar/custom-gmail.sh",
-    "interval": 300,
-    "return-type": "json",
-    "on-click": "exec ~/Projects/OpenAI/GPTMail/main.py"
+
+  "hyprland/window": {
+    "max-length": 60,
+    "separate-outputs": false
   },
-  "custom/terminal": {
-    "format": "",
-    "on-click": "kitty -T wayterm -c ~/.config/kitty/wayterm.conf -e bash",
-    "tooltip": "Launch terminal"
+
+  "mpris": {
+    "format": "{title}",
+    "format-paused": " {title}",
+    "max-length": 32,
+    "tooltip-format": "{player} — {title}"
   },
-  "custom/cpu_temp": {
-    "exec": "~/Scripts/waybar/cpu-temp.sh",
-    "interval": 15,
-    "return-type": "json",
-    "format": "󰔏 ICON BANK  󰴷  ",
-    "tooltip": "cpu temperature"
-  },
-  "tray": {
-    "spacing": 10
-  },
+
   "clock": {
     "format": "{:%a %b %d  %I:%M %p}",
-    "format-alt": "{:%Y-%m-%d %H:%M}",
-    "tooltip": "{:%c}"
+    "format-alt": "{:%Y-%m-%d  %H:%M}",
+    "tooltip": "{:%A, %B %d, %Y\n%c}"
   },
-  "cpu": {
-    "format": "󰍛 {usage}%",
-    "format-alt": "CPU {usage}%",
-    "tooltip": "CPU usage",
-    "on-click": "waybar-msg action toggle-format cpu",
-    "states": {
-      "low": 20,
-      "moderate": 60,
-      "high": 80
-    }
-  },
-  "memory": {
-    "format": " {used}G",
-    "format-alt": "RAM {used}G / {total}G",
-    "tooltip": "memory usage",
-    "on-click": "waybar-msg action toggle-format memory",
-    "states": {
-      "low": 30,
-      "moderate": 70,
-      "high": 90
-    }
-  },
+
   "network": {
     "format": "󰤨 {essid}",
     "format-disconnected": "󰤭 offline",
     "format-alt": "⇣ {bandwidthDownBits} ⇡ {bandwidthUpBits}",
-    "tooltip": "Network status",
-    "on-click": "waybar-msg action toggle-format network"
+    "tooltip": "Network status"
   },
+
   "pulseaudio": {
-    "format": " {volume}%",
-    "format-muted": " mute",
-    "format-alt": "Audio {volume}%",
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 mute",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
     "tooltip": "Audio volume",
-    "on-click": "waybar-msg action toggle-format pulseaudio",
+    "on-click": "sh -lc 'pactl set-sink-mute @DEFAULT_SINK@ toggle'",
+    "on-scroll-up": "sh -lc 'pactl set-sink-volume @DEFAULT_SINK@ +5%'",
+    "on-scroll-down": "sh -lc 'pactl set-sink-volume @DEFAULT_SINK@ -5%'"
+  },
+
+  "bluetooth": {
+    "format": "󰂯 {status}",
+    "format-connected": "󰂯 {num_connected}",
+    "tooltip-format": "Bluetooth: {status}",
+    "on-click": "sh -lc 'if bluetoothctl show | grep -q \"Powered: yes\"; then bluetoothctl power off; else bluetoothctl power on; fi'"
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "tooltip": "Caffeinate: prevent sleep when ON"
+  },
+
+  "backlight": {
+    "format": " {percent}%",
+    "on-scroll-up": "sh -lc 'brightnessctl set +5%'",
+    "on-scroll-down": "sh -lc 'brightnessctl set 5%-'"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
     "states": {
-      "muted": true,
-      "low": 0,
-      "medium": 1,
-      "high": 50
-    }
-  }
+      "warning": 25,
+      "critical": 10
+    },
+    "format-icons": [
+      "", "", "", "", ""
+    ]
+  },
+
+  "tray": { "spacing": 6 }
 }

@@ -1,0 +1,9 @@
+Directory Tree Mapping
+[33m/home/braydenchaffee/.config/nvim/lua/config[0m
+├── autocmds.lua
+├── diagnostics.lua
+├── keymaps.lua
+├── lazy.lua
+├── lsp_patch.lua
+├── options.lua
+└── whichkey.lua

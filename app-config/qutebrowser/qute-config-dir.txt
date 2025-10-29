@@ -1,0 +1,484 @@
+=== live_toggle_waybar.sh ===
+#!/bin/bash
+echo "SETUP THEMES BEFORE RUNNING THIS SON"
+
+current=$(cat ~/.cache/waybar_theme 2>/dev/null || echo "mocha")
+
+if [[ "$current" == "mocha" ]]; then
+  cp ~/.config/waybar/style-latte.css ~/.config/waybar/style.css
+  echo "latte" >~/.cache/waybar_theme
+else
+  cp ~/.config/waybar/style-mocha.css ~/.config/waybar/style.css
+  echo "mocha" >~/.cache/waybar_theme
+fi
+
+pkill -SIGUSR2 waybar
+
+
+
+=== .gitignore ===
+# This is the .gitignore.
+greasemonkey/
+bookmarks/
+quickmarks
+autoconfig.yml
+
+
+
+=== theme_mocha.py ===
+# theme-mocha.py — Catppuccin Mocha + Anonymous Pro
+# Fonts
+c.fonts.default_family = "Anonymous Pro Minus"
+c.fonts.default_size = "11pt"
+c.fonts.completion.entry = "11pt 'Anonymous Pro Minus'"
+c.fonts.statusbar = "10pt 'Anonymous Pro Minus'"
+c.fonts.tabs.selected = "11pt 'Anonymous Pro Minus'"
+
+# Catppuccin Mocha Palette
+bg = "#1e1e2e"
+fg = "#cdd6f4"
+surface = "#313244"
+overlay = "#45475a"
+muted = "#a6adc8"
+accent = "#89b4fa"
+green = "#a6e3a1"
+peach = "#fab387"
+red = "#f38ba8"
+
+# Completion
+c.colors.completion.fg = fg
+c.colors.completion.odd.bg = bg
+c.colors.completion.even.bg = bg
+c.colors.completion.category.bg = surface
+c.colors.completion.category.fg = accent
+c.colors.completion.item.selected.bg = overlay
+c.colors.completion.item.selected.fg = fg
+c.colors.completion.scrollbar.bg = bg
+c.colors.completion.scrollbar.fg = surface
+
+# Statusbar
+c.colors.statusbar.normal.bg = bg
+c.colors.statusbar.normal.fg = fg
+c.colors.statusbar.insert.bg = green
+c.colors.statusbar.insert.fg = bg
+c.colors.statusbar.command.bg = surface
+c.colors.statusbar.command.fg = fg
+
+# Tabs
+c.colors.tabs.bar.bg = bg
+c.colors.tabs.odd.bg = bg
+c.colors.tabs.odd.fg = muted
+c.colors.tabs.even.bg = bg
+c.colors.tabs.even.fg = muted
+c.colors.tabs.selected.odd.bg = surface
+c.colors.tabs.selected.odd.fg = fg
+c.colors.tabs.selected.even.bg = surface
+c.colors.tabs.selected.even.fg = fg
+
+# Downloads
+c.colors.downloads.bar.bg = surface
+c.colors.downloads.start.bg = accent
+c.colors.downloads.start.fg = bg
+c.colors.downloads.stop.bg = green
+c.colors.downloads.stop.fg = bg
+
+
+
+=== theme_toggle_state ===
+mocha
+
+
+
+=== QtProject.conf ===
+[FileDialog]
+history=file:///home/braydenchaffee/Pictures/screenshots/snap.0628.1.jpg, file:///home/braydenchaffee/Projects/Finance/pyNance/backend/app/data, file:///home/braydenchaffee/Projects/Finance/pyNance, file:///home/braydenchaffee, file:///home/braydenchaffee/Projects/pyNance
+lastVisited=file:///home/braydenchaffee
+qtVersion=6.9.1
+shortcuts=file:, file:///home/braydenchaffee, file:///home/braydenchaffee/Projects/Finance/pyNance
+sidebarWidth=96
+treeViewHeader=@ByteArray(\0\0\0\xff\0\0\0\0\0\0\0\x1\0\0\0\x1\0\0\0\0\x1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x1\xb0\0\0\0\x4\x1\x1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x64\xff\xff\xff\xff\0\0\0\x81\0\0\0\0\0\0\0\x4\0\0\0\xbb\0\0\0\x1\0\0\0\0\0\0\0\x41\0\0\0\x1\0\0\0\0\0\0\0\x41\0\0\0\x1\0\0\0\0\0\0\0s\0\0\0\x1\0\0\0\0\0\0\x3\xe8\0\xff\xff\xff\xff\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x1)
+viewMode=Detail
+
+
+
+=== notify_qute.sh ===
+#!/usr/bin/env bash
+
+TARGET_WINDOW_TITLE="$1" # e.g. "Arch Linux Assistant - OpenGithubSDK Status Report - qutebrowser"
+MESSAGE="$2"             # e.g. "Docs updated for OpenGithubSDK 🚀"
+
+# Find matching window ID using hyprctl
+WIN_ID=$(hyprctl clients -j | jq -r \
+  --arg title "$TARGET_WINDOW_TITLE" \
+  '.[] | select(.title == $title) | .address')
+
+if [[ -z "$WIN_ID" ]]; then
+  echo "Window with title '$TARGET_WINDOW_TITLE' not found"
+  exit 1
+fi
+
+# Focus the window
+hyprctl dispatch focuswindow address:"$WIN_ID"
+
+# Send message to qutebrowser via userscript or simulated keystroke (see notes below)
+qutebrowser ":message-info '$MESSAGE'"
+
+
+
+=== theme_nord.py ===
+# ~/.config/qutebrowser/theme_nord.py
+# Nord: https://www.nordtheme.com
+nord0 = "#2E3440"
+nord1 = "#3B4252"
+nord2 = "#434C5E"
+nord3 = "#4C566A"
+nord4 = "#D8DEE9"
+nord5 = "#E5E9F0"
+nord6 = "#ECEFF4"
+nord7 = "#8FBCBB"
+nord8 = "#88C0D0"
+nord9 = "#81A1C1"
+nord10 = "#5E81AC"
+nord11 = "#BF616A"
+nord12 = "#D08770"
+nord13 = "#EBCB8B"
+nord14 = "#A3BE8C"
+nord15 = "#B48EAD"
+
+bg0 = nord0
+bg1 = nord1
+bg2 = nord2
+fg = nord6
+fg_dim = nord4
+
+# Completion
+c.colors.completion.category.bg = bg1
+c.colors.completion.category.fg = fg
+c.colors.completion.category.border.top = bg1
+c.colors.completion.category.border.bottom = bg1
+c.colors.completion.even.bg = bg0
+c.colors.completion.odd.bg = bg0
+c.colors.completion.fg = [fg, fg, fg_dim]
+c.colors.completion.item.selected.bg = bg2
+c.colors.completion.item.selected.fg = nord8
+c.colors.completion.item.selected.border.top = bg2
+c.colors.completion.item.selected.border.bottom = bg2
+c.colors.completion.match.fg = nord9
+c.colors.completion.scrollbar.bg = bg0
+c.colors.completion.scrollbar.fg = fg_dim
+
+# Statusbar
+c.colors.statusbar.normal.bg = bg1
+c.colors.statusbar.normal.fg = fg
+c.colors.statusbar.insert.bg = nord10
+c.colors.statusbar.insert.fg = bg1
+c.colors.statusbar.command.bg = bg0
+c.colors.statusbar.command.fg = fg
+c.colors.statusbar.caret.bg = nord15
+c.colors.statusbar.caret.fg = bg1
+c.colors.statusbar.passthrough.bg = nord8
+c.colors.statusbar.passthrough.fg = bg1
+c.colors.statusbar.progress.bg = nord9
+c.colors.statusbar.url.fg = fg
+c.colors.statusbar.url.hover.fg = nord8
+c.colors.statusbar.url.success.http.fg = nord14
+c.colors.statusbar.url.success.https.fg = nord14
+c.colors.statusbar.url.warn.fg = nord13
+c.colors.statusbar.url.error.fg = nord11
+
+# Tabs
+c.colors.tabs.bar.bg = bg1
+c.colors.tabs.indicator.error = nord11
+c.colors.tabs.indicator.start = nord9
+c.colors.tabs.indicator.stop = nord8
+
+c.colors.tabs.even.bg = bg0
+c.colors.tabs.even.fg = fg_dim
+c.colors.tabs.odd.bg = bg0
+c.colors.tabs.odd.fg = fg_dim
+
+c.colors.tabs.selected.even.bg = bg2
+c.colors.tabs.selected.even.fg = fg
+c.colors.tabs.selected.odd.bg = bg2
+c.colors.tabs.selected.odd.fg = fg
+
+# Downloads
+c.colors.downloads.bar.bg = bg1
+c.colors.downloads.start.bg = nord9
+c.colors.downloads.stop.bg = nord14
+c.colors.downloads.error.fg = nord11
+
+# Hints / Messages
+c.colors.hints.bg = nord13
+c.colors.hints.fg = bg1
+c.colors.hints.match.fg = nord11
+
+c.colors.messages.error.bg = bg1
+c.colors.messages.error.border = nord11
+c.colors.messages.error.fg = nord11
+c.colors.messages.warning.bg = bg1
+c.colors.messages.warning.border = nord13
+c.colors.messages.warning.fg = nord13
+c.colors.messages.info.bg = bg1
+c.colors.messages.info.border = nord9
+c.colors.messages.info.fg = fg
+
+# Prompts
+c.colors.prompts.bg = bg0
+c.colors.prompts.border = bg1
+c.colors.prompts.fg = fg
+c.colors.prompts.selected.bg = bg2
+
+# Keyhints
+c.colors.keyhint.bg = bg0
+c.colors.keyhint.fg = fg
+c.colors.keyhint.suffix.fg = nord9
+
+
+
+=== cheatsheet.html ===
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Qutebrowser Keybind Cheatsheet</title>
+  <style>
+    body {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      font-family: "Anonymous Pro", monospace;
+      padding: 2rem;
+    }
+    h1 {
+      color: #89b4fa;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    th, td {
+      padding: 0.5rem;
+      border: 1px solid #313244;
+    }
+    th {
+      background: #313244;
+      color: #a6e3a1;
+    }
+    tr:nth-child(even) {
+      background: #2e2e3e;
+    }
+    code {
+      color: #fab387;
+    }
+  </style>
+</head>
+<body>
+  <h1>Qutebrowser Keybind Cheatsheet</h1>
+  <table>
+    <tr><th>Key</th><th>Action</th></tr>
+    <tr><td><code>o</code></td><td>Open URL in current tab</td></tr>
+    <tr><td><code>O</code></td><td>Open URL in new tab</td></tr>
+    <tr><td><code>t</code></td><td>New tab</td></tr>
+    <tr><td><code>d</code></td><td>Close current tab</td></tr>
+    <tr><td><code>u</code></td><td>Undo close tab</td></tr>
+    <tr><td><code>J / K</code></td><td>Switch tabs left / right</td></tr>
+    <tr><td><code>H / L</code></td><td>History back / forward</td></tr>
+    <tr><td><code>/</code></td><td>Search on page</td></tr>
+    <tr><td><code>n / N</code></td><td>Next / previous match</td></tr>
+    <tr><td><code>gg / G</code></td><td>Top / bottom of page</td></tr>
+    <tr><td><code>f</code></td><td>Follow link (keyboard hint)</td></tr>
+    <tr><td><code>F</code></td><td>Open link in new tab</td></tr>
+    <tr><td><code>yy</code></td><td>Copy current URL</td></tr>
+    <tr><td><code>p / P</code></td><td>Paste URL (current/new tab)</td></tr>
+    <tr><td><code>,t</code></td><td>Toggle Catppuccin theme</td></tr>
+    <tr><td><code>,w</code></td><td>Toggle Waybar theme</td></tr>
+    <tr><td><code>:config-edit</code></td><td>Edit config.py</td></tr>
+    <tr><td><code>:restart</code></td><td>Reload Qutebrowser</td></tr>
+  </table>
+</body>
+</html>
+
+
+
+=== .theme_state ===
+nord
+
+
+
+=== theme_nightfox.py ===
+# ~/.config/qutebrowser/theme_nightfox.py
+# Palette (Nightfox-ish): https://github.com/EdenEast/nightfox.nvim (approx)
+bg0 = "#111319"
+bg1 = "#1a1c23"
+bg2 = "#22262e"
+fg = "#cdcecf"
+fg_dim = "#9da3af"
+
+blue = "#89b4fa"
+cyan = "#7dcfff"
+green = "#a6e3a1"
+mag = "#cba6f7"
+red = "#f38ba8"
+yellow = "#f9e2af"
+orange = "#fab387"
+
+# ----- Completion -------------------------------------------------------------
+c.colors.completion.category.bg = bg1
+c.colors.completion.category.border.bottom = bg1
+c.colors.completion.category.border.top = bg1
+c.colors.completion.category.fg = fg
+
+c.colors.completion.even.bg = bg0
+c.colors.completion.odd.bg = bg0
+c.colors.completion.fg = [fg, fg, fg_dim]
+c.colors.completion.item.selected.bg = bg2
+c.colors.completion.item.selected.border.bottom = bg2
+c.colors.completion.item.selected.border.top = bg2
+c.colors.completion.item.selected.fg = blue
+c.colors.completion.match.fg = blue
+c.colors.completion.scrollbar.bg = bg0
+c.colors.completion.scrollbar.fg = fg_dim
+
+# ----- Statusbar --------------------------------------------------------------
+c.colors.statusbar.normal.bg = bg1
+c.colors.statusbar.normal.fg = fg
+c.colors.statusbar.insert.bg = blue
+c.colors.statusbar.insert.fg = bg1
+c.colors.statusbar.command.bg = bg0
+c.colors.statusbar.command.fg = fg
+c.colors.statusbar.caret.bg = mag
+c.colors.statusbar.caret.fg = bg1
+c.colors.statusbar.passthrough.bg = cyan
+c.colors.statusbar.passthrough.fg = bg1
+c.colors.statusbar.progress.bg = blue
+c.colors.statusbar.url.fg = fg
+c.colors.statusbar.url.hover.fg = cyan
+c.colors.statusbar.url.success.http.fg = green
+c.colors.statusbar.url.success.https.fg = green
+c.colors.statusbar.url.warn.fg = yellow
+c.colors.statusbar.url.error.fg = red
+
+# ----- Tabs -------------------------------------------------------------------
+c.colors.tabs.bar.bg = bg1
+c.colors.tabs.indicator.error = red
+c.colors.tabs.indicator.start = blue
+c.colors.tabs.indicator.stop = cyan
+
+c.colors.tabs.even.bg = bg0
+c.colors.tabs.even.fg = fg_dim
+c.colors.tabs.odd.bg = bg0
+c.colors.tabs.odd.fg = fg_dim
+
+c.colors.tabs.selected.even.bg = bg2
+c.colors.tabs.selected.even.fg = fg
+c.colors.tabs.selected.odd.bg = bg2
+c.colors.tabs.selected.odd.fg = fg
+
+# ----- Downloads --------------------------------------------------------------
+c.colors.downloads.bar.bg = bg1
+c.colors.downloads.start.bg = blue
+c.colors.downloads.stop.bg = green
+c.colors.downloads.error.fg = red
+
+# ----- Hints / Messages -------------------------------------------------------
+c.colors.hints.bg = yellow
+c.colors.hints.fg = bg1
+c.colors.hints.match.fg = red
+
+c.colors.messages.error.bg = bg1
+c.colors.messages.error.border = red
+c.colors.messages.error.fg = red
+c.colors.messages.warning.bg = bg1
+c.colors.messages.warning.border = yellow
+c.colors.messages.warning.fg = yellow
+c.colors.messages.info.bg = bg1
+c.colors.messages.info.border = blue
+c.colors.messages.info.fg = fg
+
+# ----- Prompts ----------------------------------------------------------------
+c.colors.prompts.bg = bg0
+c.colors.prompts.border = bg1
+c.colors.prompts.fg = fg
+c.colors.prompts.selected.bg = bg2
+
+# ----- Keyhints ---------------------------------------------------------------
+c.colors.keyhint.bg = bg0
+c.colors.keyhint.fg = fg
+c.colors.keyhint.suffix.fg = blue
+
+
+
+=== config.py ===
+# ~/.config/qutebrowser/config.py
+config.load_autoconfig(False)
+
+c.url.start_pages = ["http://192.168.1.198:8085"]
+c.url.default_page = "http://192.168.1.198:8085"
+
+c.completion.web_history.max_items = 1000
+c.completion.cmd_history_max_items = 500
+c.completion.height = "30%"
+c.completion.shrink = True
+
+c.fonts.default_family = "JetBrains Mono"
+c.fonts.default_size = "11pt"
+
+# 🔹 Source the *current* theme (symlink will point to Nightfox or Nord)
+config.source("theme_current.py")
+
+# Binds
+config.bind(",t", "spawn --userscript ~/.config/qutebrowser/toggle_theme.sh")
+config.bind(",w", "spawn --userscript ~/.config/qutebrowser/toggle_waybar.sh")
+config.bind(
+    ",h", "open file:///home/braydenchaffee/.config/qutebrowser/cheatsheet.html"
+)
+config.bind(",p", "open file:///home/braydenchaffee/Pictures/Screenshots/")
+
+# Dark mode tuning (still useful for non-themed content)
+config.set("colors.webpage.darkmode.enabled", True)
+config.set("colors.webpage.darkmode.policy.images", "smart")
+config.set("colors.webpage.darkmode.threshold.foreground", 120)
+config.set("colors.webpage.darkmode.threshold.background", 230)
+
+
+
+=== toggle_theme.sh ===
+# ~/.config/qutebrowser/toggle_theme.sh
+#!/usr/bin/env bash
+set -euo pipefail
+
+CFG_DIR="${HOME}/.config/qutebrowser"
+CURRENT="${CFG_DIR}/theme_current.py"
+NIGHTFOX="${CFG_DIR}/theme_nightfox.py"
+NORD="${CFG_DIR}/theme_nord.py"
+STATE="${CFG_DIR}/.theme_state"
+
+# Default to Nightfox on first run
+if [[ ! -e "$CURRENT" ]]; then
+  ln -sfn "$NIGHTFOX" "$CURRENT"
+  echo "nightfox" >"$STATE"
+fi
+
+cur="nightfox"
+[[ -f "$STATE" ]] && cur="$(cat "$STATE" || echo nightfox)"
+
+if [[ "$cur" == "nightfox" ]]; then
+  ln -sfn "$NORD" "$CURRENT"
+  echo "nord" >"$STATE"
+  msg="Theme: Nord"
+else
+  ln -sfn "$NIGHTFOX" "$CURRENT"
+  echo "nightfox" >"$STATE"
+  msg="Theme: Nightfox"
+fi
+
+# Reload qutebrowser config live if QUTE_FIFO is available
+if [[ -n "${QUTE_FIFO:-}" && -p "$QUTE_FIFO" ]]; then
+  printf '%s\n' "message-info '$msg'" >"$QUTE_FIFO"
+  printf '%s\n' "config-source" >"$QUTE_FIFO"
+fi
+
+
+

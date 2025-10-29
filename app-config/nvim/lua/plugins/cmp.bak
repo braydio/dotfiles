@@ -1,0 +1,30 @@
+-- nvim-cmp tweaks: enable ghost text and refine sources
+return {
+  'hrsh7th/nvim-cmp',
+  ---@param opts cmp.ConfigSchema
+  opts = function(_, opts)
+    opts.experimental = vim.tbl_deep_extend('force', opts.experimental or {}, { ghost_text = true })
+
+    -- Ensure common sources are present and ordered
+    local existing = {}
+    opts.sources = opts.sources or {}
+    for _, s in ipairs(opts.sources) do
+      existing[s.name] = true
+    end
+
+    local function add_source(src)
+      if not existing[src.name] then
+        table.insert(opts.sources, src)
+        existing[src.name] = true
+      end
+    end
+
+    add_source { name = 'nvim_lsp' }
+    add_source { name = 'path' }
+    add_source { name = 'buffer', keyword_length = 3 }
+    add_source { name = 'luasnip' }
+
+    return opts
+  end,
+}
+

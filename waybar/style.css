@@ -6,137 +6,137 @@
   min-height: 0;
 }
 
+/* Root container */
 window#waybar {
-  background: rgba(24, 26, 38, 0.92);
+  background: rgba(24, 26, 38, 0.72);
   color: @text;
-  margin: 8px 18px;
-  padding: 6px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(145, 215, 227, 0.18);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
-}
-
-#waybar .module {
-  background: rgba(35, 38, 54, 0.65);
-  border: 1px solid rgba(145, 215, 227, 0.12);
+  margin: 6px 14px;
+  padding: 4px 8px;
   border-radius: 10px;
-  padding: 6px 14px;
-  margin: 0 6px;
+  border: 1px solid rgba(145, 215, 227, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Shared module chip */
+.module {
+  background: rgba(35, 38, 54, 0.48);
   color: @text;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(145, 215, 227, 0.16);
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 
-#waybar .module:hover {
-  border-color: rgba(145, 215, 227, 0.4);
-  background: rgba(45, 48, 66, 0.75);
+.module:hover {
+  background: rgba(45, 48, 66, 0.62);
+  border-color: rgba(145, 215, 227, 0.36);
 }
 
+/* Compact spacing inside grouped segments */
+.module > .module {
+  margin: 0 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Workspaces */
 #workspaces {
   background: transparent;
   border: none;
   box-shadow: none;
   padding: 0;
-  margin: 0 12px 0 0;
+  margin: 0 10px 0 0;
 }
 
 #workspaces button {
-  background: transparent;
-  border: 1px solid transparent;
+  background: rgba(35, 38, 54, 0.48);
+  border: 2px solid rgba(145, 215, 227, 0.16);
   border-radius: 8px;
   color: @overlay1;
   font-weight: 500;
-  padding: 4px 12px;
-  margin-right: 6px;
-  min-width: 26px;
+  padding: 2px 10px;
+  margin-right: 4px;
+  min-width: 22px;
 }
 
 #workspaces button.active {
   color: @text;
-  background: rgba(145, 215, 227, 0.22);
-  border-color: rgba(145, 215, 227, 0.45);
+  background: rgba(145, 215, 227, 0.18);
+  border: 2px solid rgba(145, 215, 227, 0.44);
 }
 
 #workspaces button:hover {
   color: @text;
-  background: rgba(139, 213, 202, 0.24);
+  background: rgba(139, 213, 202, 0.22);
+  border: 2px solid rgba(145, 215, 227, 0.36);
 }
 
 #workspaces button.urgent {
   color: @crust;
-  background: rgba(237, 135, 150, 0.6);
-  border-color: rgba(237, 135, 150, 0.7);
+  background: rgba(237, 135, 150, 0.55);
+  border: 2px solid rgba(237, 135, 150, 0.75);
 }
 
+/* Window title */
 #hyprland-window {
-  background: rgba(35, 38, 54, 0.55);
-  border: 1px solid rgba(145, 215, 227, 0.1);
-  border-radius: 10px;
-  padding: 6px 18px;
-  margin: 0 10px;
+  background: rgba(35, 38, 54, 0.50);
+  border: 2px solid rgba(145, 215, 227, 0.16);
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin: 0 8px;
   color: @subtext0;
-  min-width: 220px;
+  min-width: 200px;
 }
 
-#hyprland-window.empty {
-  color: @overlay2;
+#hyprland-window.empty { color: @overlay2; }
+
+/* Module accents */
+#custom-launcher { background: rgba(139, 213, 202, 0.18); color: @text; font-weight: 700; }
+#custom-launcher:hover { background: rgba(139, 213, 202, 0.24); }
+
+#custom-center_l, #custom-center_r {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 6px;
+  margin: 0 2px;
+  color: @sapphire;
 }
 
-#custom-terminal {
-  color: @sky;
-  font-weight: 600;
-  padding-right: 10px;
-  padding-left: 12px;
-}
-
-#network {
-  color: @teal;
-  font-weight: 500;
-  min-width: 120px;
-}
-
-#cpu {
-  color: @peach;
-  min-width: 90px;
-  font-weight: 500;
-}
-
-#cpu.high {
-  color: @red;
-}
-
-#memory {
-  color: @green;
-  min-width: 80px;
-}
-
-#memory.high {
-  color: @red;
-}
-
-#pulseaudio {
-  color: @lavender;
-  min-width: 90px;
-}
-
-#pulseaudio.muted {
+#network         { color: @teal; font-weight: 500; min-width: 96px; }
+#pulseaudio      { color: @lavender; min-width: 86px; }
+#pulseaudio.muted{ color: @overlay1; background: rgba(54, 58, 79, 0.6); }
+#bluetooth       { color: @mauve; min-width: 64px; padding: 4px 8px; }
+#bluetooth.disabled, #bluetooth.off, #bluetooth.powered_off, #bluetooth.powered-off {
   color: @overlay1;
-  background: rgba(54, 58, 79, 0.7);
+  background: rgba(54, 58, 79, 0.6);
 }
+#idle_inhibitor  { color: @yellow; padding: 4px 8px; }
+#backlight       { color: @sapphire; min-width: 76px; }
+#battery         { color: @green; min-width: 84px; }
+#clock           { font-weight: 700; padding: 4px 12px; min-width: 160px; }
+#tray            { padding: 0 6px; margin-right: 0; }
 
-#tray {
-  padding: 0 10px;
-  margin-right: 10px;
-}
+#mpris           { color: @sky; }
 
-#clock {
-  font-weight: 600;
-  padding: 6px 16px;
-  min-width: 150px;
-}
-
+/* Menus */
 #tray menu {
-  background: rgba(24, 25, 37, 0.95);
+  background: rgba(24, 25, 37, 0.96);
   color: @text;
-  border-radius: 10px;
-  border: 1px solid rgba(145, 215, 227, 0.18);
+  border-radius: 8px;
+  border: 1px solid rgba(145, 215, 227, 0.16);
+}
+
+/* Subtle separators for groups */
+#group-system, #group-media {
+  border-left: 2px solid rgba(145, 215, 227, 0.12);
+  padding-left: 8px;
+  margin-left: 6px;
+}
+
+#group-workspaces-title {
+  border-right: 2px solid rgba(145, 215, 227, 0.12);
+  padding-right: 8px;
+  margin-right: 6px;
 }

@@ -1,0 +1,12 @@
+./live_toggle_waybar.sh
+./.gitignore
+./theme_mocha.py
+./theme_toggle_state
+./qsettings/QtProject.conf
+./notify_qute.sh
+./theme_nord.py
+./cheatsheet.html
+./.theme_state
+./theme_nightfox.py
+./config.py
+./toggle_theme.sh

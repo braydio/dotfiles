@@ -1,0 +1,93 @@
+{
+  "position": "bottom",
+  "height": 40,
+  "style": "style.css",
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "custom/terminal",
+    "network",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "tray",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "enable-shortnames": true,
+    "strip-wl": true
+  },
+  "custom/gmail": {
+    "exec": "~/Scripts/waybar/custom-gmail.sh",
+    "interval": 300,
+    "return-type": "json",
+    "on-click": "exec ~/Projects/OpenAI/GPTMail/main.py"
+  },
+  "custom/terminal": {
+    "format": "",
+    "on-click": "kitty -T wayterm -c ~/.config/kitty/wayterm.conf -e bash",
+    "tooltip": "Launch terminal"
+  },
+  "custom/cpu_temp": {
+    "exec": "~/Scripts/waybar/cpu-temp.sh",
+    "interval": 15,
+    "return-type": "json",
+    "format": "󰔏 ICON BANK  󰴷  ",
+    "tooltip": "cpu temperature"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%a %b %d  %I:%M %p}",
+    "format-alt": "{:%Y-%m-%d %H:%M}",
+    "tooltip": "{:%c}"
+  },
+  "cpu": {
+    "format": "󰍛 {usage}%",
+    "format-alt": "CPU {usage}%",
+    "tooltip": "CPU usage",
+    "on-click": "waybar-msg action toggle-format cpu",
+    "states": {
+      "low": 20,
+      "moderate": 60,
+      "high": 80
+    }
+  },
+  "memory": {
+    "format": " {used}G",
+    "format-alt": "RAM {used}G / {total}G",
+    "tooltip": "memory usage",
+    "on-click": "waybar-msg action toggle-format memory",
+    "states": {
+      "low": 30,
+      "moderate": 70,
+      "high": 90
+    }
+  },
+  "network": {
+    "format": "󰤨 {essid}",
+    "format-disconnected": "󰤭 offline",
+    "format-alt": "⇣ {bandwidthDownBits} ⇡ {bandwidthUpBits}",
+    "tooltip": "Network status",
+    "on-click": "waybar-msg action toggle-format network"
+  },
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " mute",
+    "format-alt": "Audio {volume}%",
+    "tooltip": "Audio volume",
+    "on-click": "waybar-msg action toggle-format pulseaudio",
+    "states": {
+      "muted": true,
+      "low": 0,
+      "medium": 1,
+      "high": 50
+    }
+  }
+}

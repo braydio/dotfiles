@@ -1,0 +1,13 @@
+Directory Tree Mapping
+[33mFile: ./live_toggle_waybar.sh[0m
+[33mFile: ./.gitignore[0m
+[33mFile: ./theme_mocha.py[0m
+[33mFile: ./theme_toggle_state[0m
+[33mFile: ./qsettings/QtProject.conf[0m
+[33mFile: ./notify_qute.sh[0m
+[33mFile: ./theme_nord.py[0m
+[33mFile: ./cheatsheet.html[0m
+[33mFile: ./.theme_state[0m
+[33mFile: ./theme_nightfox.py[0m
+[33mFile: ./config.py[0m
+[33mFile: ./toggle_theme.sh[0m
