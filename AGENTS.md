@@ -13,6 +13,7 @@ This repository stores the Hyprland configuration for daily use, so ship small, 
 - `hyprctl keyword source ~/.config/hypr/hyprland.conf` — force-read the entry chain when testing include changes.
 - `hyprpaper reload` — refresh wallpapers after editing `hyprpaper.conf` or swapping assets.
 - `git diff` — inspect pending edits before staging to avoid clobbering generated content.
+- `waybar-msg module idle_inhibitor toggle` — toggle the Waybar idle inhibitor (caffeinator) if `waybar-msg` is available.
 
 ## Coding Style & Naming Conventions
 - Write settings as `keyword=value` with spaced comma lists (`monitor=HDMI-A-1, preferred, auto, auto`).
@@ -32,6 +33,21 @@ This repository stores the Hyprland configuration for daily use, so ship small, 
 ## Security & Configuration Tips
 - Never commit secrets or machine-specific tokens; reference them from `env.conf` placeholders instead.
 - New scripts need a shebang, `chmod +x`, and should be invoked via `$` variables so dispatchers stay consistent.
+
+## Waybar Caffeination Toggle
+- A helper script exists at `scripts/toggle_idle_inhibitor.sh` to toggle Waybar’s built-in `idle_inhibitor` module (the “caffeinator” button).
+- A Hyprland keybind is wired to `$mainMod + I` in `keybinds.conf` to execute this script.
+- The script prefers `waybar-msg` (if present) to toggle the module. If `waybar-msg` is not installed, it will print a helpful error.
+- Test flow:
+  - Run `hyprctl reload` after editing configs.
+  - Press `$mainMod + I` to toggle; confirm the icon in Waybar changes (coffee moon icons) and idle is inhibited.
+  - If nothing happens, ensure `waybar-msg` is installed and in PATH (provided by the Waybar package on most distros).
+
+## AI Agent Touchpoints
+- Keybind additions belong in `keybinds.conf` and should use `$mainMod`/named variables where applicable.
+- New scripts go under `scripts/` with a shebang and executable bit; prefer calling them via `bash -lc '<path>'` in keybinds for portability.
+- Waybar modules live under `waybar/` (`config`, `style.css`). The idle inhibitor is `idle_inhibitor`; styling via `#idle_inhibitor` is already present in `waybar/style.css`.
+- Keep changes hot-reload-safe; prefer idempotent scripts and non-destructive binds.
 
 ## Waybar Styling Notes
 - Waybar styles use GTK CSS (libgtk-3) syntax rather than web CSS; confirm selectors against the GTK widget tree with `GTK_DEBUG=interactive waybar` if unsure.

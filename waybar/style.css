@@ -6,31 +6,40 @@
   min-height: 0;
 }
 
-/* Root container */
+/* Root container: transparent, let modules be chips */
 window#waybar {
-  background: rgba(24, 26, 38, 0.72);
+  background: transparent;
   color: @text;
   margin: 6px 14px;
-  padding: 4px 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(145, 215, 227, 0.12);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
-/* Shared module chip */
+/* Shared module chip: gradient pill, like lower-left metrics */
 .module {
-  background: rgba(35, 38, 54, 0.48);
+  background: linear-gradient(
+    to right,
+    rgba(24, 26, 38, 0.80),
+    rgba(24, 26, 38, 0.40)
+  );
   color: @text;
-  border: 2px solid rgba(145, 215, 227, 0.16);
-  border-radius: 8px;
-  padding: 5px 10px;
+  border-radius: 999px;
+  border: none;
+  padding: 4px 11px;
   margin: 0 5px;
-  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  transition: background 120ms ease, box-shadow 120ms ease, color 120ms ease;
 }
 
 .module:hover {
-  background: rgba(45, 48, 66, 0.62);
-  border-color: rgba(145, 215, 227, 0.36);
+  background: linear-gradient(
+    to right,
+    rgba(35, 38, 54, 0.90),
+    rgba(24, 26, 38, 0.55)
+  );
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.32);
 }
 
 /* Compact spacing inside grouped segments */
@@ -42,9 +51,6 @@ window#waybar {
 
 /* Workspaces */
 #workspaces {
-  background: transparent;
-  border: none;
-  box-shadow: none;
   padding: 0;
   margin: 0 10px 0 0;
 }
@@ -80,11 +86,6 @@ window#waybar {
 
 /* Window title */
 #hyprland-window {
-  background: rgba(35, 38, 54, 0.50);
-  border: 2px solid rgba(145, 215, 227, 0.16);
-  border-radius: 8px;
-  padding: 4px 12px;
-  margin: 0 8px;
   color: @subtext0;
   min-width: 200px;
 }
@@ -92,8 +93,8 @@ window#waybar {
 #hyprland-window.empty { color: @overlay2; }
 
 /* Module accents */
-#custom-launcher { background: rgba(139, 213, 202, 0.18); color: @text; font-weight: 700; }
-#custom-launcher:hover { background: rgba(139, 213, 202, 0.24); }
+#custom-launcher { color: @text; font-weight: 700; }
+#custom-launcher:hover { color: @text; }
 
 #custom-center_l, #custom-center_r {
   background: transparent;
@@ -128,15 +129,19 @@ window#waybar {
   border: 1px solid rgba(145, 215, 227, 0.16);
 }
 
-/* Subtle separators for groups */
-#group-system, #group-media {
-  border-left: 2px solid rgba(145, 215, 227, 0.12);
-  padding-left: 8px;
-  margin-left: 6px;
+/* Grouped sections: act as transparent layout wrappers */
+#group-workspaces-title,
+#group-system,
+#group-media {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 6px;
+  box-shadow: none;
 }
 
-#group-workspaces-title {
-  border-right: 2px solid rgba(145, 215, 227, 0.12);
-  padding-right: 8px;
-  margin-right: 6px;
+#group-workspaces-title > .module,
+#group-system > .module,
+#group-media > .module {
+  margin: 0 4px;
 }
