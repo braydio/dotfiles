@@ -28,11 +28,11 @@ This repository contains Hyprland, Waybar, and related config for daily use. Thi
 - `extra.conf` — overflow and experiments (non-disruptive).
 
 ## Waybar
-- `waybar/config` — module layout and behavior.
+- `app-config/waybar/config` — module layout and behavior.
   - Caffeinator module: `idle_inhibitor` (icons: activated = coffee, deactivated = moon).
   - Groups: `group/workspaces-title`, `group/system`, etc.
-- `waybar/style.css` — GTK CSS theme for Waybar; uses tokens imported via `waybar/way_colors.css` (symlink to theme).
-- `waybar/way_colors.css` — palette import; keep hex usage centralized.
+- `app-config/waybar/style.css` — GTK CSS theme for Waybar; uses tokens imported via `app-config/waybar/way_colors.css` (symlink to theme).
+- `app-config/waybar/way_colors.css` — palette import; keep hex usage centralized.
 
 ## Scripts
 - `scripts/toggle_idle_inhibitor.sh` — toggles Waybar `idle_inhibitor` via `waybar-msg`.
@@ -41,7 +41,7 @@ This repository contains Hyprland, Waybar, and related config for daily use. Thi
 
 ## App- and Theme-Specific
 - `app-config/` — per-application tweaks.
-- `themes/` — theme palettes for Hyprland and Waybar; `colors.conf` and `waybar/way_colors.css` link here.
+- `themes/` — theme palettes for Hyprland and Waybar; `colors.conf` and `app-config/waybar/way_colors.css` link here.
 
 ## Logs and Validation
 - Hyprland log: `~/.local/share/hyprland/hyprland.log`.
@@ -50,4 +50,3 @@ This repository contains Hyprland, Waybar, and related config for daily use. Thi
   - `hyprctl reload` to hot-reload Hyprland.
   - `hyprctl keyword source ~/.config/hypr/hyprland.conf` to test include chain.
   - `waybar-msg module idle_inhibitor toggle` to toggle caffeination (if `waybar-msg` available).
-

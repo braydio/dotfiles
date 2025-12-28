@@ -9,7 +9,7 @@ fi
 
 HYPR_DIR="$HOME/.config/hypr"
 THEME_DIR="$HYPR_DIR/themes/$theme"
-WAYBAR_DIR="$HYPR_DIR/waybar"
+WAYBAR_DIR="$HYPR_DIR/app-config/waybar"
 
 ln -sfn "$THEME_DIR/hypr-colors.conf" "$HYPR_DIR/colors.conf"
 ln -sfn "$THEME_DIR/waybar-colors.css" "$WAYBAR_DIR/way_colors.css"

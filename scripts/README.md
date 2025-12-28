@@ -25,7 +25,15 @@ Helper scripts invoked by keybinds or used for quick validation.
 - What it does:
   - Scans autostart/extra/keybind configs for referenced commands and checks PATH.
   - Verifies known asset/script paths used by this config.
-  - Exits non-zero if required commands or paths are missing.
+- Exits non-zero if required commands or paths are missing.
+
+## link-configs.sh
+- Purpose: Link app configs under `app-config/` into `~/.config` using GNU stow.
+- Usage: `~/.config/hypr/scripts/link-configs.sh`
+- Options: `--dry-run`, `--restow`, `--target <dir>`, plus optional package names.
+- Behavior:
+  - Stows all `app-config/*` folders into `~/.config` by default.
+  - Backs up existing real configs to `*.bak.<timestamp>` before linking.
 
 Conventions
 - All scripts include a shebang and use `set -euo pipefail`.

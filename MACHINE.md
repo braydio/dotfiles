@@ -14,7 +14,7 @@ Host-specific notes and expectations to keep configs portable. Avoid committing 
 
 ## Environment
 - Config root: `~/.config/hypr`
-- Waybar config: `~/.config/hypr/waybar/config`
+- Waybar config (repo): `~/.config/hypr/app-config/waybar/config` (stowed to `~/.config/waybar/config`)
 - Logs:
   - Hyprland: `~/.local/share/hyprland/hyprland.log`
   - Waybar: `~/.local/share/waybar/waybar.log`
@@ -27,4 +27,3 @@ Host-specific notes and expectations to keep configs portable. Avoid committing 
 - `hyprctl reload` after edits to catch syntax errors early.
 - `waybar-msg module idle_inhibitor toggle` to test the caffeination module.
 - `scripts/sanity.sh` for a quick health check (safe mid-session).
-

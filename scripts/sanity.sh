@@ -18,7 +18,7 @@ fi
 
 echo
 echo "== Waybar =="
-WAYBAR_CFG="$HOME/.config/hypr/waybar/config"
+WAYBAR_CFG="$HOME/.config/hypr/app-config/waybar/config"
 if [[ -f "$WAYBAR_CFG" ]]; then
   echo "Found Waybar config: $WAYBAR_CFG"
   if rg -n '"idle_inhibitor"' "$WAYBAR_CFG" >/dev/null 2>&1; then
@@ -49,4 +49,3 @@ echo "== Summary =="
 echo "- Use 'hyprctl reload' after editing configs."
 echo "- Press '$mainMod + I' to toggle caffeination (requires waybar-msg)."
 echo "- Run 'make check-logs' or this script to review logs."
-

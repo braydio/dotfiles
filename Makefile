@@ -3,7 +3,7 @@
 .PHONY: reload waybar-reload check-logs waybar-logs validate bars docs waybar-caffeinate bootstrap
 
 HYPR_DIR ?= $(HOME)/.config/hypr
-WAYBAR_DIR ?= $(HYPR_DIR)/waybar
+WAYBAR_DIR ?= $(HYPR_DIR)/app-config/waybar
 
 reload:
 	@echo "[hypr] reload"

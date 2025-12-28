@@ -6,7 +6,7 @@ This repository stores the Hyprland configuration for daily use, so ship small, 
 - `hyprland.conf` bootstraps the session and sources, in order: `monitors.conf`, `autostart.conf`, `env.conf`, `colors.conf`, `style.conf`, `keybinds.conf`, `rules.conf`, `input.conf`, `workspaces.conf`, and `extra.conf`. Confirm placement before adding new includes.
 - Keep module assets beside their config (`themes/` for palette files, scripts next to the callers) and make helpers in `scripts/` executable.
 - Park experiments in `backups/` using a timestamp suffix (`monitors-20240221.conf`) to avoid contaminating the active load.
-- Per-application tweaks live in `app-config/`, and Waybar overrides live under `waybar/`. Reuse tokens from `colors.conf` instead of duplicating hex values.
+- Per-application tweaks live in `app-config/`, including Waybar overrides under `app-config/waybar/`. Reuse tokens from `colors.conf` instead of duplicating hex values.
 
 ## Build, Test, and Development Commands
 - `hyprctl reload` — hot reload the session and surface syntax errors.
@@ -46,7 +46,7 @@ This repository stores the Hyprland configuration for daily use, so ship small, 
 ## AI Agent Touchpoints
 - Keybind additions belong in `keybinds.conf` and should use `$mainMod`/named variables where applicable.
 - New scripts go under `scripts/` with a shebang and executable bit; prefer calling them via `bash -lc '<path>'` in keybinds for portability.
-- Waybar modules live under `waybar/` (`config`, `style.css`). The idle inhibitor is `idle_inhibitor`; styling via `#idle_inhibitor` is already present in `waybar/style.css`.
+- Waybar modules live under `app-config/waybar/` (`config`, `style.css`). The idle inhibitor is `idle_inhibitor`; styling via `#idle_inhibitor` is already present in `app-config/waybar/style.css`.
 - Keep changes hot-reload-safe; prefer idempotent scripts and non-destructive binds.
 
 ## Waybar Styling Notes
@@ -55,6 +55,6 @@ This repository stores the Hyprland configuration for daily use, so ship small, 
 - GTK lacks flex layout support; avoid `display: flex` entirely and recreate spacing with `margin`/`padding` on the child nodes.
 - Style individual modules through the shared `.module` class (Waybar assigns it automatically) and override specific IDs (`#cpu`, `#clock`, etc.) for color tweaks rather than relying on unsupported container layout rules.
 - Root styling should target `window#waybar`; `#waybar` works for legacy themes but the GTK window selector keeps overrides predictable.
-- Leverage the palette tokens defined in `waybar/way_colors.css` via `@import` instead of raw hex codes to keep themes consistent.
+- Leverage the palette tokens defined in `app-config/waybar/way_colors.css` via `@import` instead of raw hex codes to keep themes consistent.
 - Scoped selectors target GTK node IDs such as `#waybar`, `#workspaces button`, and module IDs; pseudo-classes are limited to `:hover`, `:active`, and `:checked`.
 - Always reload with `hyprctl reload` (or restart Waybar) after editing CSS to catch parse errors logged to `~/.local/share/waybar/waybar.log`.

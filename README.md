@@ -6,7 +6,8 @@ This is my daily-driver Hyprland + Waybar configuration. It is organized to be s
 1) Place this repo at `~/.config/hypr` (or set `REPO_DIR` for scripts).
 2) Run `~/.config/hypr/scripts/bootstrap.sh` to check dependencies and referenced assets.
 3) Install missing packages and add the referenced wallpapers/scripts.
-4) Run `hyprctl reload` and review `~/.local/share/hyprland/hyprland.log`.
+4) Install GNU stow, then run `~/.config/hypr/scripts/link-configs.sh` to link app configs into `~/.config`.
+5) Run `hyprctl reload` and review `~/.local/share/hyprland/hyprland.log`.
 
 Arch notes
 - Run `~/.config/hypr/scripts/bootstrap.sh --print-install` for pacman + AUR hints.
@@ -22,6 +23,16 @@ The repo includes a lightweight, read-only bootstrap checker:
   - Exits non-zero if required commands or paths are missing.
 - Optional output: `--print-install` prints best-effort install commands for missing packages.
 
+## App Config Linking
+Use GNU stow to link everything under `app-config/` into `~/.config`:
+
+- Script: `scripts/link-configs.sh`
+- What it does:
+  - Stows all `app-config/*` folders into `~/.config` by default.
+  - Backs up existing real configs to `*.bak.<timestamp>` before linking.
+  - Supports `--dry-run` and `--restow` for safe updates.
+  - Once stowed, edits and git pulls in this repo are live in `~/.config`.
+
 ## Layout and Include Order
 The Hyprland entrypoint is `hyprland.conf`, which sources configs in this order:
 1) `monitors.conf`
@@ -36,7 +47,7 @@ The Hyprland entrypoint is `hyprland.conf`, which sources configs in this order:
 10) `extra.conf`
 
 ## Waybar Notes
-- Waybar config lives at `waybar/config` and styling at `waybar/style.css`.
+- Waybar config lives at `app-config/waybar/config` and styling at `app-config/waybar/style.css`.
 - The caffeinator module is `idle_inhibitor` and is wired to `$mainMod + I` via `scripts/toggle_idle_inhibitor.sh`.
 
 ## Scripts

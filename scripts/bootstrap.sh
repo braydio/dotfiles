@@ -252,6 +252,7 @@ fi
 echo
 echo "== Next steps =="
 echo "- Run 'hyprctl reload' after changes."
+echo "- Run 'scripts/link-configs.sh' to stow app configs into ~/.config."
 echo "- Run 'scripts/sanity.sh' to inspect logs."
 
 if ((${#missing_cmds[@]} > 0 || missing_paths > 0)); then

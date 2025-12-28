@@ -4,7 +4,7 @@ This setup defines two Waybar instances in a single config (array form):
 - Top bar — workspaces, window title, media, system toggles, tray
 - Bottom bar — system resource indicators and a right-aligned clock
 
-File: waybar/config
+File: app-config/waybar/config
 - The file is a JSON array with two bar objects.
 - Each bar specifies `position`, `height`, and `modules-*` sections.
 
@@ -26,6 +26,5 @@ Caffeination
 - Toggle via `$mainMod + I` or `make waybar-caffeinate` (IPC required).
 
 Notes
-- Styling is shared via `waybar/style.css`. Module IDs can be targeted with `#cpu`, `#memory`, etc.
-- Use palette tokens from `waybar/way_colors.css` (symlink to theme) rather than raw hex.
-
+- Styling is shared via `app-config/waybar/style.css`. Module IDs can be targeted with `#cpu`, `#memory`, etc.
+- Use palette tokens from `app-config/waybar/way_colors.css` (symlink to theme) rather than raw hex.
