@@ -1,6 +1,6 @@
 # Quality-of-life targets for local validation. Safe to run mid-session.
 
-.PHONY: reload waybar-reload check-logs waybar-logs validate bars docs waybar-caffeinate
+.PHONY: reload waybar-reload check-logs waybar-logs validate bars docs waybar-caffeinate bootstrap
 
 HYPR_DIR ?= $(HOME)/.config/hypr
 WAYBAR_DIR ?= $(HYPR_DIR)/waybar
@@ -41,3 +41,7 @@ docs:
 waybar-caffeinate:
 	@echo "[waybar] toggle idle inhibitor via IPC"
 	@command -v waybar-msg >/dev/null 2>&1 && waybar-msg module idle_inhibitor toggle || echo "waybar-msg not found; install Waybar with IPC support"
+
+bootstrap:
+	@echo "[setup] check dependencies and referenced assets"
+	@bash -lc "$(HYPR_DIR)/scripts/bootstrap.sh"
